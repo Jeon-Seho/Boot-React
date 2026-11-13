@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Outlet } from 'react-router';
 
 import { lazy, Suspense } from 'react';
 import BasicLayout from "../layouts/basicLayout.tsx";
@@ -11,7 +11,7 @@ const About = lazy(() => import('../pages/aboutPage'))
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: BasicLayout,
+        element: <BasicLayout><Outlet /></BasicLayout>,
         children: [
             {
                 index: true,
