@@ -1,7 +1,8 @@
-import { createBrowserRouter, Outlet } from 'react-router';
+import { createBrowserRouter } from 'react-router';
 
 import { lazy, Suspense } from 'react';
 import BasicLayout from "../layouts/basicLayout.tsx";
+import todoRouter from "./todoRouter.tsx";
 
 const Loading = () => <div>Loading...</div>
 
@@ -11,7 +12,7 @@ const About = lazy(() => import('../pages/aboutPage'))
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <BasicLayout><Outlet /></BasicLayout>,
+        Component: BasicLayout,
         children: [
             {
                 index: true,
@@ -21,8 +22,9 @@ const router = createBrowserRouter([
                 path: "about",
                 element: <Suspense fallback={<Loading/>}><About/></Suspense>
             },
+            todoRouter()
         ],
-    },
+    }
 ])
 
 export default router

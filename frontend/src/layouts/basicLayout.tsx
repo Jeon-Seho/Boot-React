@@ -1,11 +1,12 @@
 import type { ReactNode } from 'react';
+import { Outlet } from 'react-router';
 import BasicMenu from "../components/menus/basicMenu.tsx";
 
 type BasicLayoutProps = {
-    children: ReactNode;
+    children?: ReactNode;
 };
 
-const BasicLayout = ({children}: BasicLayoutProps) => {
+const BasicLayout = ({children = <Outlet />}: BasicLayoutProps) => {
     return (
         <>
             <BasicMenu></BasicMenu>
