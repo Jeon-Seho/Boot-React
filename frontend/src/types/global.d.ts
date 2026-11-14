@@ -1,3 +1,9 @@
+interface ResultModal {
+    title: string,
+    content: string,
+    callbackFn? : () => void
+}
+
 interface PageRequestDTO {
     page: number,
     size: number

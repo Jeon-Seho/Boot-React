@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getList } from "../../api/todoApi.tsx";
 
-import useCustomMove from "../../hook/useCustomMove.tsx";
+import useCustomMove from "../../hooks/useCustomMove.tsx";
 import PageComponent from "../common/pageComponent.tsx";
 
 const initState: PageResponseDTO<Todo> = {

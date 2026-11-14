@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getOne } from "../../api/todoApi"
-import useCustomMove from "../../hook/useCustomMove.tsx";
+import useCustomMove from "../../hooks/useCustomMove.tsx";
 
 const initState : Todo = { tno:0, title:'', writer:'', dueDate:null, complete:false }
 
