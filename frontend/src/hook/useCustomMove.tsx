@@ -1,7 +1,9 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { createSearchParams, useNavigate, useSearchParams} from "react-router";
 
 const useCustomMove = () => {
+    const [refresh, setRefresh] = useState<boolean>(false)
+
     const navigate = useNavigate()
     const [queryParams] = useSearchParams()
 
@@ -27,6 +29,10 @@ const useCustomMove = () => {
                 page: String(pageNum),
                 size: String(sizeNum),
             }).toString()
+
+            if (queryStr == queryDefault) {
+                setRefresh(!refresh)
+            }
         } else {
             queryStr = queryDefault
         }
@@ -45,7 +51,7 @@ const useCustomMove = () => {
         })
     }
 
-    return {page, size, moveToList, moveToModify, moveToRead}
+    return {page, size, moveToList, moveToModify, moveToRead, refresh}
 }
 
 export default useCustomMove;
