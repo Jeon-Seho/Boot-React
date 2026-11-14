@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getList } from "../../api/todoApi.tsx";
 
 import useCustomMove from "../../hook/useCustomMove.tsx";
+import PageComponent from "../common/pageComponent.tsx";
 
 const initState: PageResponseDTO<Todo> = {
     dtoList: [],
@@ -49,6 +50,7 @@ const ListComponent = () => {
                     </div>
                 )}
             </div>
+            <PageComponent serverData={serverData} movePage={moveToList}></PageComponent>
         </div>
     )
 }
