@@ -12,7 +12,10 @@ function BasicMenu() {
                         <NavLink to='/about'>About</NavLink>
                     </li>
                     <li className="pr-6 text-2xl">
-                        <NavLink to='todo'>Todo</NavLink>
+                        <NavLink to='/todo/'>Todo</NavLink>
+                    </li>
+                    <li className="pr-6 text-2xl">
+                        <NavLink to='/products/'>Products</NavLink>
                     </li>
                 </ul>
             </div>

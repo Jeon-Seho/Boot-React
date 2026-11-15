@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import { lazy, Suspense } from 'react';
 import BasicLayout from "../layouts/basicLayout.tsx";
 import todoRouter from "./todoRouter.tsx";
+import productsRouter from "./productsRouter.tsx";
 
 const Loading = () => <div>Loading...</div>
 
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
                 path: "about",
                 element: <Suspense fallback={<Loading/>}><About/></Suspense>
             },
-            todoRouter()
+            todoRouter(),
+            productsRouter()
         ],
     }
 ])
