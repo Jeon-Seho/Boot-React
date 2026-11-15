@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerok.mallapi.dto.ProductDTO;
+import org.zerok.mallapi.service.ProductService;
 import org.zerok.mallapi.util.CustomFileUtil;
 
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.Map;
 public class ProductController {
     private final CustomFileUtil fileUtil;
 
+    private final ProductService productService;
+
     @PostMapping("/")
     public Map<String, String> register(ProductDTO productDTO) {
         log.info("register: " + productDTO);
@@ -28,6 +31,8 @@ public class ProductController {
         productDTO.setUploadFileNames(uploadFileNames);
 
         log.info(uploadFileNames);
+
+        Long pno = productService.register(productDTO);
 
         return Map.of("RESULT", "SUCCESS");
     }
