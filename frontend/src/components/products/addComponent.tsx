@@ -1,5 +1,9 @@
 import axios from "axios"
 import { useActionState } from "react"
+import useCustomMove from "../../hooks/useCustomMove.tsx";
+import PendingModal from "../common/pendingModal.tsx";
+import ResultModal from "../common/resultModal.tsx";
+
 interface ProductAddResult {
     result?: number,
     error? : string
@@ -16,12 +20,24 @@ const addAsyncAction = async ( state:ProductAddResult, formData:FormData): Promi
     return {result: res.data.result}
 }
 const AddComponent = () => {
-    const [state, action, isPending] = useActionState(addAsyncAction, initState )
+    const [state, action, isPending] = useActionState(addAsyncAction, initState)
+
+    const {moveToList} = useCustomMove()
+
+    const closeModal = () : void => {
+        moveToList()
+    }
 
     return (
         <div className = "border-2 border-sky-200 mt-10 m-2 p-4">
-            {isPending && <div>처리중.........</div>}
-            {state.result != 0 && <div>처리 결과 {state.result} </div>}
+            {isPending && <PendingModal/>}
+            {state.result != 0 &&
+                <ResultModal
+                    title="상품 추가 결과"
+                    content={`새로운 ${state.result} 상품 추가됨`}
+                    callbackFn={closeModal}/>
+            }
+
             <form action={action} >
                 <div className="flex justify-center">
                     <div className="relative mb-4 flex w-full flex-wrap items-stretch">
