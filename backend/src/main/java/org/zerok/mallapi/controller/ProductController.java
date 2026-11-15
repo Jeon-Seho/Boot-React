@@ -6,6 +6,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.zerok.mallapi.dto.PageRequestDTO;
+import org.zerok.mallapi.dto.PageResponseDTO;
 import org.zerok.mallapi.dto.ProductDTO;
 import org.zerok.mallapi.service.ProductService;
 import org.zerok.mallapi.util.CustomFileUtil;
@@ -46,6 +48,13 @@ public class ProductController {
     @GetMapping("/{tno}")
     public ProductDTO read(@PathVariable(name = "tno") Long tno) {
         return productService.get(tno);
+    }
+
+    @GetMapping("/list")
+    public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO) {
+        log.info("list............." + pageRequestDTO);
+
+        return productService.getList(pageRequestDTO);
     }
 
     @PutMapping("/{pno}")
