@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useLoaderData } from "react-router";
-import { LoaderFunctionArgs } from "react-router";
+import { type LoaderFunctionArgs } from "react-router";
 
 export async function loadProduct({params}: LoaderFunctionArgs) {
     const {pno} = params
