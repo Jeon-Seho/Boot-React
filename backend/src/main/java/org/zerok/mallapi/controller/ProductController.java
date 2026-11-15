@@ -41,4 +41,9 @@ public class ProductController {
     public ResponseEntity<Resource> viewFileGet(@PathVariable String fileName) {
         return fileUtil.getFile(fileName);
     }
+
+    @GetMapping("/{tno}")
+    public ProductDTO read(@PathVariable(name = "tno") Long tno) {
+        return productService.get(tno);
+    }
 }
