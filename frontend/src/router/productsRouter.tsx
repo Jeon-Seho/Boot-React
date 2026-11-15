@@ -1,10 +1,12 @@
 import { Navigate } from "react-router";
 import { lazy, Suspense } from "react"
 import { loadProducts } from "../pages/products/listPage"
+import { loadProduct } from "../pages/products/readPage"
 
 const ProductsIndex = lazy(() => import("../pages/products/indexPage"))
 const ProductsList = lazy(() => import("../pages/products/listPage"))
 const ProductsAdd = lazy(() => import("../pages/products/addPage"))
+const ProductRead = lazy(() => import("../pages/products/readPage"))
 
 const Loading = () => <div>Products Loading....</div>
 
@@ -18,7 +20,6 @@ export default function productsRouter() {
                     path: "list",
                     element: <Suspense fallback={<Loading/>}><ProductsList/></Suspense>,
                     loader: loadProducts,
-                    HydrateFallback: <div>로딩 중...</div>
                 },
                 {
                     path: "add",
@@ -27,6 +28,11 @@ export default function productsRouter() {
                 {
                     path: "",
                     element: <Navigate to={'/products/list'}></Navigate>
+                },
+                {
+                    path: "read/:pno",
+                    element: <Suspense fallback={<Loading/>}><ProductRead/></Suspense>,
+                    loader: loadProduct
                 }
             ]
         }

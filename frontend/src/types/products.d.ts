@@ -1,5 +1,5 @@
 interface ProductDTO {
-    pro: number;
+    pno: number;
     pname: string;
     price: number;
     pdesc: string,
