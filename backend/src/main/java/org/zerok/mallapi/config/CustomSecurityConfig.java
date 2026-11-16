@@ -17,6 +17,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.zerok.mallapi.security.filter.JWTCheckFilter;
 import org.zerok.mallapi.security.handler.APILoginFailHandler;
 import org.zerok.mallapi.security.handler.APILoginSuccessHandler;
+import org.zerok.mallapi.security.handler.CustomAccessDeniedHandler;
 
 import java.util.Arrays;
 
@@ -51,6 +52,10 @@ public class CustomSecurityConfig {
         });
 
         http.addFilterBefore(new JWTCheckFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        http.exceptionHandling(config -> {
+            config.accessDeniedHandler(new CustomAccessDeniedHandler());
+        });
 
         return http.build();
     }
