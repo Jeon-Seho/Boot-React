@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import BasicLayout from "../layouts/basicLayout.tsx";
 import todoRouter from "./todoRouter.tsx";
 import productsRouter from "./productsRouter.tsx";
+import memberRouter from "./memberRouter.tsx";
 
 const Loading = () => <div>Loading...</div>
 
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
             todoRouter(),
             productsRouter()
         ],
-    }
+    },
+    memberRouter()
 ])
 
 export default router
