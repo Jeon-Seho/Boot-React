@@ -1,4 +1,5 @@
 import { useActionState, useState } from "react";
+import type { MouseEvent } from "react";
 import useCustomMove from "../../hooks/useCustomMove";
 import axios from "axios";
 import PendingModal from "../common/pendingModal.tsx";

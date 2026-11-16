@@ -1,5 +1,6 @@
 import {createSearchParams, type LoaderFunctionArgs, useLoaderData} from "react-router";
 import axios from "axios";
+import ListComponent from "../../components/products/listComponent";
 
 export async function loadProducts({request}: LoaderFunctionArgs) {
     const url = new URL(request.url);
@@ -22,6 +23,7 @@ const ListPage = () => {
             <div className="text-2xl m-4 font-extrabold">
                 Products List Page
             </div>
+            <ListComponent serverData={pageResponse} />
         </div>
     );
 }
