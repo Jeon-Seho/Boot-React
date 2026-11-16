@@ -43,17 +43,18 @@ public class JWTUtil {
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
-        } catch (MalformedJwtException malformedJwtException){
+        } catch (MalformedJwtException malformedJwtException) {
             throw new CustomJWTException("MalFormed");
-        } catch (ExpiredJwtException expiredJwtException){
+        } catch (ExpiredJwtException expiredJwtException) {
             throw new CustomJWTException("Expired");
-        } catch (InvalidClaimException invalidClaimException){
+        } catch (InvalidClaimException invalidClaimException) {
             throw new CustomJWTException("Invalid");
-        } catch (JwtException jwtException){
+        } catch (JwtException jwtException) {
             throw new CustomJWTException("JWTError");
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new CustomJWTException("Error");
         }
 
         return claim;
+    }
 }
