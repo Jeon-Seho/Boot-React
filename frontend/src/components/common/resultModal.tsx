@@ -1,5 +1,5 @@
 const ResultModal= ( {title,content, callbackFn}:ResultModal) =>{
-    return(
+    return (
         <div
             className="fixed top-0 left-0 z-[1055] flex h-full w-full justify-center bg-black "
             style={{ backgroundColor: 'rgba(169, 169, 169, 0.7)'}}
