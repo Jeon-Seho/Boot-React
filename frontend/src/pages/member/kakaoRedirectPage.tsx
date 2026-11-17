@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { useSearchParams } from "react-router";
+import { getAccessToken } from"../../api/kakaoApi";
 
 const KakaoRedirectPage = () => {
     const [searchParams] = useSearchParams()
     const authCode = searchParams.get("code")
+
+    useEffect(() => {
+        if(authCode){
+            getAccessToken(authCode).then(data =>{
+                console.log(data)
+            })
+        }
+    }, [authCode])
 
     return (
         <div>
@@ -11,4 +21,5 @@ const KakaoRedirectPage = () => {
         </div>
     )
 }
+
 export default KakaoRedirectPage;
