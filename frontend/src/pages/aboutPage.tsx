@@ -1,16 +1,12 @@
-import useCustomLogin from "../hooks/useCustomLogin";
+import AuthComponent from "../components/common/authComponent";
 
 function AboutPage() {
-    const {loginStatus, moveToLoginReturn} = useCustomLogin()
-
-    if(!loginStatus) {
-        return moveToLoginReturn()
-    }
-
     return (
-        <div className=" text-3xl">
-            <div>About Page</div>
-        </div>
+        <AuthComponent>
+            <div className=" text-3xl">
+                <div>About Page</div>
+            </div>
+        </AuthComponent>
     );
 }
 
