@@ -14,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.zerok.mallapi.domain.Member;
 import org.zerok.mallapi.domain.MemberRole;
 import org.zerok.mallapi.dto.MemberDTO;
+import org.zerok.mallapi.dto.MemberModifyDTO;
 import org.zerok.mallapi.repository.MemberRepository;
 
 import java.util.LinkedHashMap;
@@ -45,6 +46,18 @@ public class MemberServiceImpl implements MemberService {
         MemberDTO memberDTO= entityToDTO(socialMember);
 
         return memberDTO;
+    }
+
+    @Override
+    public void modifyMember(MemberModifyDTO memberModifyDTO) {
+        Optional<Member> result = memberRepository.findById(memberModifyDTO.getEmail());
+
+        Member member = result.orElseThrow();
+        member.changePw(passwordEncoder.encode(memberModifyDTO.getPw()));
+        member.changeSocial(false);
+        member.changeNickname(memberModifyDTO.getNickname());
+
+        memberRepository.save(member);
     }
 
     private String getEmailFromKakaoAccessToken(String accessToken) {
