@@ -1,6 +1,7 @@
 import {useState} from "react"
 import ResultModal from "../common/resultModal";
 import useCustomLogin from "../../hooks/useCustomLogin.tsx";
+import KakaoLoginComponent from "./KakaoLoginComponent.tsx";
 
 function LoginComponent() {
     const {loginStatus, doLogin, moveToPath} = useCustomLogin()
@@ -51,6 +52,7 @@ function LoginComponent() {
                     </div>
                 </div>
             </div>
+            <KakaoLoginComponent/>
         </div>
     )
 }
