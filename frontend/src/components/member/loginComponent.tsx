@@ -1,22 +1,13 @@
 import {useState} from "react"
-import {useDispatch, useSelector} from "react-redux";
-import {loginPostAsync} from "../../slices/loginSlice.tsx";
-import type {AppDispatch, RootState} from "../../store.tsx";
-import { useNavigate } from "react-router";
 import ResultModal from "../common/resultModal";
 import useCustomLogin from "../../hooks/useCustomLogin.tsx";
 
 function LoginComponent() {
-    const dispatch = useDispatch<AppDispatch>()
     const {loginStatus, doLogin, moveToPath} = useCustomLogin()
     const[email, setEmail] = useState('')
     const[pw, setPw] = useState('')
 
     const handleLogin= () => {
-        dispatch(loginPostAsync({email, pw}))
-    }
-
-    const handleLogin = () => {
         doLogin(email, pw)
     }
 

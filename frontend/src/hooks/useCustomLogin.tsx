@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "../store"
+import type { AppDispatch, RootState } from "../store"
 import {loginPostAsync, logout, save} from "../slices/loginSlice"
 import { Navigate, useNavigate } from "react-router"
 import { useEffect } from "react"

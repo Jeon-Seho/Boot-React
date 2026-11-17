@@ -15,8 +15,6 @@ function BasicMenu() {
                         <NavLink to='/about'>About</NavLink>
                     </li>
 
-                    loginState.email
-
                     <>
                     <li className="pr-6 text-2xl">
                         <NavLink to='/todo/'>Todo</NavLink>
@@ -34,7 +32,7 @@ function BasicMenu() {
                     </div>
                     :
                     <div className="text-white text-sm m-1 rounded" >
-                        <p>{loginState.nickname}님</p>
+                        <p>{loginState.nickname}님 ({loginState.email})</p>
                         <NavLink to='/member/logout'> Logout</NavLink>
                     </div>
                 }

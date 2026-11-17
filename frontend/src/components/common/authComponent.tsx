@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import useCustomLogin from "../../hooks/useCustomLogin"
 
 function AuthComponent({children}: {children:ReactNode}) {
