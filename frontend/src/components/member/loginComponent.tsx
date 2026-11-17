@@ -4,10 +4,11 @@ import {loginPostAsync} from "../../slices/loginSlice.tsx";
 import type {AppDispatch, RootState} from "../../store.tsx";
 import { useNavigate } from "react-router";
 import ResultModal from "../common/resultModal";
+import useCustomLogin from "../../hooks/useCustomLogin.tsx";
 
 function LoginComponent() {
     const dispatch = useDispatch<AppDispatch>()
-    const loginStatus= useSelector((state: RootState) =>state.loginSlice.status)
+    const {loginStatus, doLogin, moveToPath} = useCustomLogin()
     const[email, setEmail] = useState('')
     const[pw, setPw] = useState('')
 
@@ -15,9 +16,12 @@ function LoginComponent() {
         dispatch(loginPostAsync({email, pw}))
     }
 
-    const navigate = useNavigate()
+    const handleLogin = () => {
+        doLogin(email, pw)
+    }
+
     const closeModal = () => {
-        navigate("/")
+        moveToPath('/')
     }
 
     return (
