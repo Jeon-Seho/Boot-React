@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import {loginPost} from "../api/memberApi.tsx";
-import {setCookie} from "../util/cookieUtil.ts";
+import {removeCookie, setCookie} from "../util/cookieUtil.ts";
 
 export interface LoginInfo {
     email:string,
@@ -30,8 +30,15 @@ const loginSlice = createSlice( {
     name: 'LoginSlice',
     initialState: initState,
     reducers: {
-        logout: (state, action) =>{
+        save: (state, action) => {
+            console.log("save")
+
+            return action.payload
+        },
+        logout: (state, action) => {
             console.log("logout")
+
+            removeCookie("member")
 
             return {...initState}
         }
@@ -60,6 +67,6 @@ const loginSlice = createSlice( {
     }
 })
 
-export const {logout} = loginSlice.actions
+export const {save, logout} = loginSlice.actions
 
 export default loginSlice.reducer
